@@ -18,4 +18,17 @@ function register(req,res){
     })
 }
 
-module.exports={register}
+function logIn(req,res){
+  return User.find({username:req.body.username})
+    .then(user=>{
+      let payload={
+          username:user.username,
+          password:user.password
+      }
+    let token=jwt.sign(payload,secret)
+    return token
+   }) 
+
+}
+
+module.exports={register,logIn}
