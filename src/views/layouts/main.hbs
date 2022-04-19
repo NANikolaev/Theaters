@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Express Exam</title>
+    <link href="/css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+        {{#if user}}
+        {{>user}}
+        {{else}}
+        {{>guest}}
+        {{/if}}
+ 
+    <main>
+         {{{body}}}
+    </main>
+    <footer>
+        <div>© 2020
+            <a href="https://softuni.bg/courses/js-back-end">JS Back-End</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
