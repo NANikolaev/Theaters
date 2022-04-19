@@ -3,6 +3,7 @@ const PORT=3000;
 
 require('./src/config/database')();
 require('./src/config/express')(server);
+require('./src/middlewares/middlewares')(server);
 require('./src/config/routes')(server);
 
 

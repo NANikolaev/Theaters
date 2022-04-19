@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 const bcrypt=require('bcrypt');
-
+const Play=require('./Play');
 let userSchema=new mongoose.Schema({
     username:{
         type:String,
