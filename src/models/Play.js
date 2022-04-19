@@ -12,7 +12,7 @@ let playSchema=new mongoose.Schema({
          required:[true,"Description is required."],
          maxlength:[50,'Description must be maximum 50 characters long'],
      },
-     image:{
+     imageUrl:{
          type:String,
          required:[true,"Image URL is required"]
      },
@@ -23,6 +23,18 @@ let playSchema=new mongoose.Schema({
      },
      likes:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}]
 
+})
+
+playSchema.pre('save',function(next){
+    if(this.isPublic == 'on'){
+        this.isPublic=true
+    }
+    next()
+})
+playSchema.pre('validate',function(next){
+     let calendar=new Date('April 19, 2022 20:54:00');
+     this.created=`${calendar.getDate()}/${calendar.getMonth()+1}/${calendar.getFullYear()}`
+    next()
 })
 
 let Play=mongoose.model('Play',playSchema)
