@@ -7,7 +7,11 @@ router.route('/create-theater')
     })
     .post((req, res) => {
         create(req, res)
-            .then(play => {res.redirect('/')})
+            .then(play => { res.redirect('/') })
+    })
+router.route('/details/:id')
+    .get((req, res) => {
+     
     })
 
 
