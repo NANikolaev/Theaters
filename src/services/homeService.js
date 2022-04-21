@@ -13,7 +13,7 @@ const Play=require('../models/Play');
 function allPlays(){
     return Play.find({}).lean()
         .then(plays=>{
-            return plays
+           return plays.filter(p=>p.isPublic == true).sort((a,b)=>b.created.localeCompare(a.created));                    
         })
 
 }

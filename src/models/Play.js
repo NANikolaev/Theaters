@@ -21,7 +21,12 @@ let playSchema=new mongoose.Schema({
          type:String,
          required:[true,'Required date of creation']
      },
+      creatorId:{
+          type:String,
+          required:true
+      },
      likes:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}]
+     
 
 })
 
@@ -32,8 +37,8 @@ playSchema.pre('save',function(next){
     next()
 })
 playSchema.pre('validate',function(next){
-     let calendar=new Date('April 19, 2022 20:54:00');
-     this.created=`${calendar.getDate()}/${calendar.getMonth()+1}/${calendar.getFullYear()}`
+     let calendar=new Date('April 19, 2022 20:54:00  GMT+00:00');
+     this.created=`${calendar.getDate()}/${calendar.getMonth()+1}/${calendar.getFullYear()}/time: ${calendar.toLocaleTimeString('it-IT')}`
     next()
 })
 

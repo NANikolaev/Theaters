@@ -3,7 +3,7 @@ const jwt=require('jsonwebtoken');
 const secret=require('../config/secret');
 
 function register(req,res){
-    let body=req.body
+  let body=req.body
   return  User.create({
         username:body.username,
         password:body.password,
@@ -11,7 +11,7 @@ function register(req,res){
     .then(user=>{
         let payload={
             username:user.username,
-            password:user.password
+            id:user._id
         }
       let token=jwt.sign(payload,secret)
       return token
@@ -21,11 +21,12 @@ function register(req,res){
 function logIn(req,res){
   return User.find({username:req.body.username})
     .then(user=>{
+        let us=user[0]
       let payload={
-          username:user.username,
-          password:user.password
+          username:us.username,
+          id:us._id
       }
-    let token=jwt.sign(payload,secret)
+    let token=jwt.sign(payload,secret,{expiresIn:'1d'})
     return token
    }) 
 
