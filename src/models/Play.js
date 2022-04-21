@@ -34,6 +34,7 @@ playSchema.pre('save',function(next){
     if(this.isPublic == 'on'){
         this.isPublic=true
     }
+    else{this.isPublic=false}
     next()
 })
 playSchema.pre('validate',function(next){
