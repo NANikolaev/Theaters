@@ -13,8 +13,14 @@ function ifLogged(req,res,next){
     next()
 }
 
-//function errorHandler()
+function ifErrors(req,res,next){
+    if(req.cookies['errors']){
+        res.locals.errors=req.cookies['errors']
+    }
+    next()
+}
 
 module.exports=(server)=>{
    server.use(ifLogged)
+   server.use(ifErrors)
 }
