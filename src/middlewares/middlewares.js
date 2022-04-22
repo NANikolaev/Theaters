@@ -1,5 +1,6 @@
 const jwt=require('jsonwebtoken');
 const secret=require('../config/secret');
+const url=require('url');
 
 function ifLogged(req,res,next){
     if(req.cookies['accessToken']){
@@ -11,6 +12,8 @@ function ifLogged(req,res,next){
     }
     next()
 }
+
+//function errorHandle()
 
 module.exports=(server)=>{
    server.use(ifLogged)

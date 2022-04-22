@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { create, deletePlay, getDetails,changePlay } = require('../services/playService');
+const { create, deletePlay, getDetails,changePlay ,likePlay} = require('../services/playService');
 
 router.route('/create-theater')
     .get((req, res) => {
@@ -30,6 +30,13 @@ router.route('/edit/:id')
        .then(play=>res.redirect(`/details/${play._id}`))
       
     })
+
+ router.get('/like/:id',(req,res)=>{
+        likePlay(req,res)
+        .then(play=>{
+            res.redirect(`/details/${play._id}`)
+       })
+ })
 
 
 
