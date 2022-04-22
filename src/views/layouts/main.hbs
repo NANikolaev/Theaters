@@ -8,14 +8,18 @@
 </head>
 
 <body>
-        {{#if user}}
-        {{>user}}
-        {{else}}
-        {{>guest}}
-        {{/if}}
- 
+    {{#if user}}
+    {{>user}}
+    {{else}}
+    {{>guest}}
+    {{/if}}
+
+    {{#each errors}}
+    {{>error}}
+    {{/each}}
+
     <main>
-         {{{body}}}
+        {{{body}}}
     </main>
     <footer>
         <div>© 2020

@@ -4,6 +4,9 @@ const secret=require('../config/secret');
 
 function register(req,res){
   let body=req.body
+    if(body.password != body.repeatPassword){
+     throw new Error('Password Missmatch.')
+    }
   return  User.create({
         username:body.username,
         password:body.password,

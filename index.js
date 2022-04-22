@@ -5,7 +5,7 @@ require('./src/config/database')();
 require('./src/config/express')(server);
 require('./src/middlewares/middlewares')(server);
 require('./src/config/routes')(server);
-
+require('./src/middlewares/errorHandler')(server)
 
 
 

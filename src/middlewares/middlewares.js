@@ -13,7 +13,7 @@ function ifLogged(req,res,next){
     next()
 }
 
-//function errorHandle()
+//function errorHandler()
 
 module.exports=(server)=>{
    server.use(ifLogged)
