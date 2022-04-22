@@ -14,10 +14,13 @@
     {{>guest}}
     {{/if}}
 
-    {{#each errors}}
-    {{>error}}
-    {{>error}}
-    {{/each}}
+    {{#if errors}}
+    <section class="notifications error">
+        {{#each errors}}
+        <p>{{this}}</p>
+        {{/each}}
+    </section>
+    {{/if}}
 
     <main>
         {{{body}}}

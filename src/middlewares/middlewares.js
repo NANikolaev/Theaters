@@ -15,7 +15,7 @@ function ifLogged(req,res,next){
 
 function ifErrors(req,res,next){
     if(req.cookies['errors']){
-        res.locals.errors=req.cookies['errors']
+        res.locals.errors= req.cookies['errors']
     }
     next()
 }
