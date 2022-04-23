@@ -2,7 +2,11 @@
 const Play = require('../models/Play');
 
 function create(req, res) {
-    req.body.creatorId = req.user.id
+    let data=req.body;
+    data.creatorId = req.user.id;
+    let emptyFields=Array.from(Object.values(data)).includes('') == true
+    if(emptyFields){throw new Error('Missed Field/s')}
+
     return Play.create(req.body)
 }
 
@@ -43,7 +47,7 @@ function changePlay(req, res) {
     if (req.body.isPublic == 'on') {
         req.body.isPublic = true
     }
-    else if (req.body.isPublic != "on") { req.body.isPublic = false }
+    else{ req.body.isPublic = false }
 
     return Play.findByIdAndUpdate(req.params.id, req.body)
 }
